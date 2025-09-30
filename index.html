@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keerthi Kaushik Neelagiri</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;line-height:1.6;background:#0f172a;color:#e2e8f0}
+    .wrap{max-width:900px;margin:0 auto;padding:48px 20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .name{font-size:1.75rem;font-weight:700}
+    nav a{margin-left:16px;color:#93c5fd;text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    .card{background:#0b1220;border:1px solid #1f2a44;border-radius:16px;padding:20px;margin-top:20px}
+    h2{margin:.4rem 0 0.6rem}
+    ul{padding-left:18px;margin:0}
+    footer{margin-top:40px;font-size:.9rem;color:#94a3b8}
+    .btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;border:1px solid #334155;color:#e2e8f0;text-decoration:none}
+    .btn:hover{background:#111827}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="name">Keerthi Kaushik Neelagiri</div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="card">
+      <h2>Hi, I’m Keerthi 👋</h2>
+      <p>Master’s student in Software Engineering @ UMD (Dec 2025). I build data-driven software and platforms. Seeking full-time SWE/Data roles in the U.S.</p>
+      <a class="btn" href="resume.pdf">View Résumé</a>
+    </div>
+
+    <div id="projects" class="card">
+      <h2>Selected Projects</h2>
+      <ul>
+        <li><strong>News/Media</strong> — TBD — <em>Python, FastAPI, PostgreSQL</em> — <a href="#">GitHub</a></li>
+        <li><strong>Construction</strong> — TBD — <em>React, Node, MongoDB</em> — <a href="#">GitHub</a></li>
+        <li><strong>Healthcare</strong> — TBD — <em>Django, Pandas</em> — <a href="#">GitHub</a></li>
+      </ul>
+    </div>
+
+    <div id="about" class="card">
+      <h2>About</h2>
+      <p>Ex-Accenture (ETL & Data Lake on AWS). TA for databases & secure software. I enjoy building clean backends, solid data models, and usable UIs.</p>
+    </div>
+
+    <div id="contact" class="card">
+      <h2>Contact</h2>
+      <p>
+        <a href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/<your-username>" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="mailto:kaushik3@umd.edu">Email</a>
+      </p>
+    </div>
+
+    <footer>© <span id="y"></span> Keerthi Kaushik Neelagiri</footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
