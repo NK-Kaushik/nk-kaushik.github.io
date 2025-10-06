@@ -146,7 +146,7 @@
       <svg viewBox="0 0 100 100" aria-hidden="true">
         <defs>
           <radialGradient id="kplate" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.20"/>
+            <stop offset="0%"  stop-color="#b91c1c" stop-opacity="0.20"/>
             <stop offset="70%" stop-color="#b91c1c" stop-opacity="0.10"/>
             <stop offset="100%" stop-color="#000000" stop-opacity="0.0"/>
           </radialGradient>
@@ -159,6 +159,7 @@
       </svg>
     </div>
   </div>
+
   <div class="wrap">
     <header data-fade="1">
       <div class="brand">
@@ -180,7 +181,7 @@
 
     <div class="hero" data-fade="2">
       <h1 style="margin:0">Keerthi Kaushik Neelagiri</h1>
-      <p class="subtitle">MS Software Engineering @ UMD (Dec 2025). Ex‑Accenture (ETL & AWS Data Lake). Building clean backends and data‑driven products.</p>
+      <p class="subtitle">MS Software Engineering @ UMD (Dec 2025). Ex-Accenture (ETL & AWS Data Lake). Building clean backends and data-driven products.</p>
       <div class="badges">
         <span class="badge">Python • SQL • PL/SQL</span>
         <span class="badge">AWS • ETL • Data Lakes</span>
@@ -188,9 +189,30 @@
         <span class="badge">PostgreSQL • MongoDB</span>
       </div>
     </div>
+
+    <section id="about" data-fade="2">
+      <h2>About</h2>
+      <div class="card">
+        <p>I’m a graduate student at the University of Maryland (Dec 2025) focused on software engineering and data systems. Previously at Accenture on AWS data lakes & ETL. I like designing resilient backends, thoughtful schemas, and clean developer experiences.</p>
       </div>
-    </div>
-                  <li>L          <div cla        <ul class="list">
+    </section>
+
+    <section id="experience" data-fade="3">
+      <h2>Work Experience</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Teaching Assistant — Foundations of Databases for Web Apps</strong>
+          <div class="meta">University of Maryland • 2025</div>
+          <ul class="list">
+            <li>Led weekly labs; guided SQL/NoSQL and DB-web integration.</li>
+            <li>Prepared materials, graded, and provided constructive feedback.</li>
+            <li>Helped students with query optimization, transactions, and crash recovery concepts.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Associate Software Engineer — Accenture</strong>
+          <div class="meta">Data Ingestion • Pharma • AWS</div>
+          <ul class="list">
             <li>Built ETL pipelines to AWS data lake; maintained Dev/Prod/UAT.</li>
             <li>Migrated datasets; improved reliability and monitoring.</li>
             <li>Collaborated across teams to streamline deployments.</li>
@@ -239,55 +261,86 @@
           .icon-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);
             text-decoration:none;color:var(--text);background:linear-gradient(180deg,#101010,#0d0d0d);box-shadow:0 0 0 1px rgba(212,175,55,.12) inset;transition:transform .15s ease, box-shadow .2s ease, color .2s}
           .icon-link:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--gold) inset, 0 8px 24px rgba(212,175,55,.12)}
-          .icon svg{width:22px;height:22px;filter:drop-shadow(0 0 6pxant — Foundations of Databases for Web Apps</strong>
-          <div class="meta">University of Maryland • 2025</div>
-          <ul class="list">
-            <li>Led weekly labs; guided SQL/NoSQL and DB‑web integration.</li>
-            <li>Prepared materials, graded, and provided constructive feedback.</li>
-            <li>Helped students with query optimization, transactions, and crash recovery concepts.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Associate Software Engineer — Accenture</strong>
-          <div class="meta">Data Ingestion • Pharma • AWS</div>
-          <ul class="list">
-            <li>Built ETL pipelines to AWS data lake; maintained Dev/Prod/UAT.</li>
-            <li>Migrated datasets; improved reliability and monitoring.</li>
-            <li>Collaborated across teams to streamline deployments.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          .icon svg{width:22px;height:22px;filter:drop-shadow(0 0 6px rgba(212,175,55,.25))}
+          .icon .core{fill:#d4af37}              /* default gold */
+          .icon-link.linkedin .core{fill:#0A66C2}/* LinkedIn blue */
+        </style>
+        <div class="icon-row">
+          <a class="icon-link" href="https://github.com/nk-kaushik" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-label="GitHub">
+                <path class="core" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.76.08-.75.08-.75 1.22.08 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.79.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.9 0-1.3.47-2.37 1.25-3.2-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.29-1.54 3.3-1.22 3.3-1.22.66 1.69.25 2.94.12 3.25.78.83 1.25 1.9 1.25 3.2 0 4.58-2.8 5.6-5.47 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.82.58A12 12 0 0 0 12 .5z"/>
+              </svg>
+            </span>
+            <span>github.com/nk-kaushik</span>
+          </a>
 
-    <section id="about" data-fade="3">
-      <h2>About</h2>
-      <div class="card">
-        <p>Master’s student in Software Engineering at UMD (Dec 2025). Interested in impactful software that blends solid engineering with clear data stories. Outside class, I’m active in clubs and enjoy squash, table tennis, and filmmaking.</p>
-      </div>
-    </section>
+          <a class="icon-link linkedin" href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
+                <path class="core" d="M20.45 20.45h-3.56v-5.2c0-1.24-.02-2.84-1.73-2.84-1.74 0-2 1.36-2 2.75v5.29H9.6V9h3.42v1.56h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.34 2.41 4.34 5.55v6.19ZM5.34 7.43A2.06 2.06 0 1 1 5.33 3.3a2.06 2.06 0 0 1 .01 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/>
+              </svg>
+            </span>
+            <span>LinkedIn</span>
+          </a>
 
-    <section id="contact" data-fade="3">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Email: <a href="mailto:kaushik3@umd.edu">kaushik3@umd.edu</a></p>
-        <p>Also on <a href="https://github.com/nk-kaushik" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          <a class="icon-link email" href="mailto:kaushik3@umd.edu">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-label="Email">
+                <path class="core" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-1.4 4.25-6.22 4.66a1 1 0 0 1-1.16 0L5 8.25V8l7 5 7-5v.25Z"/>
+              </svg>
+            </span>
+            <span>kaushik3@umd.edu</span>
+          </a>
+
+          <a class="icon-link instagram" href="https://instagram.com/" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-label="Instagram">
+                <defs>
+                  <radialGradient id="igGrad" cx="33%" cy="100%" r="95%">
+                    <stop offset="0%" stop-color="#feda75"/>
+                    <stop offset="25%" stop-color="#fa7e1e"/>
+                    <stop offset="50%" stop-color="#d62976"/>
+                    <stop offset="75%" stop-color="#962fbf"/>
+                    <stop offset="100%" stop-color="#4f5bd5"/>
+                  </radialGradient>
+                </defs>
+                <path fill="url(#igGrad)" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm6.25-.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
+              </svg>
+            </span>
+            <span>Instagram</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Keerthi Kaushik Neelagiri • nk‑kaushik.github.io
+      © <span id="year"></span> Keerthi Kaushik Neelagiri • nk-kaushik.github.io
     </footer>
   </div>
+
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
   <script>
-    // Hide preloader when page fully loads
-    window.addEventListener('load', function(){
-      var p = document.getElementById('preloader');
-      if(!p) return;
+    // Keep the preloader for at least this long (ms), then fade it
+    const MIN_DISPLAY_MS = 1500;
+    const start = performance.now();
+
+    function hidePreloader() {
+      const p = document.getElementById('preloader');
+      if (!p) return;
       p.classList.add('hide');
-      // safety removal after transition
-      setTimeout(function(){ if(p && p.parentNode) p.parentNode.removeChild(p); }, 800);
+      setTimeout(() => { if (p && p.parentNode) p.parentNode.removeChild(p); }, 800);
+    }
+
+    // On full load, ensure minimum display time then hide
+    window.addEventListener('load', () => {
+      const elapsed = performance.now() - start;
+      const wait = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      setTimeout(hidePreloader, wait);
     });
+
+    // Fallback: hide anyway after 6s in case 'load' never fires
+    setTimeout(hidePreloader, 6000);
   </script>
 </body>
 </html>
