@@ -108,10 +108,10 @@
     .loader{position:relative;width:160px;height:160px;display:grid;place-items:center}
     .loader .ring{position:absolute;inset:0;border-radius:50%;filter:drop-shadow(0 0 12px rgba(185,28,28,.35))}
     .loader svg{position:absolute;inset:0}
-    .loader .k{font:700 64px/1 ui-sans-serif,system-ui,Segoe UI,Inter,Arial;fill:#b91c1c;letter-spacing:1px}
+    .loader .k{font:700 84px/1 'Times New Roman', Georgia, Garamond, ui-serif, serif; fill:#d4af37; letter-spacing:0; paint-order:stroke fill; stroke:#8a6b15; stroke-width:1.2; filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 10px rgba(185,28,28,.35))} 
     /* spinning strokes */
-    .spin-slow{animation:spin 3.3s linear infinite}
-    .spin-fast{animation:spin 1.5s linear infinite reverse}
+    .spin-slow{animation:spin 2.2s linear infinite}
+    .spin-fast{animation:spin 1.1s linear infinite reverse}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media (prefers-reduced-motion: reduce){.spin-slow,.spin-fast{animation:none}}
   </style>
@@ -142,7 +142,7 @@
       </svg>
       <!-- Center letter K -->
       <svg viewBox="0 0 100 100" aria-hidden="true">
-        <text x="50" y="62" text-anchor="middle" class="k">K</text>
+        <text x="50" y="50" text-anchor="middle" dominant-baseline="central" class="k">K</text>
       </svg>
     </div>
   </div>
@@ -263,23 +263,14 @@
   </div>
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
   <script>
-  // Keep the loader visible for at least this long (in ms)
-  const MIN_DISPLAY_MS = 1500; // ← increase this number to keep it longer
-
-  const start = performance.now(); // when page started loading
-  window.addEventListener('load', function(){
-    var p = document.getElementById('preloader');
-    if(!p) return;
-    const elapsed = performance.now() - start;
-    const wait = Math.max(0, MIN_DISPLAY_MS - elapsed);
-    setTimeout(function(){
-      p.classList.add('hide');                 // triggers the CSS fade (.6s)
-      setTimeout(function(){                   // remove after fade
-        if(p && p.parentNode) p.parentNode.removeChild(p);
-      }, 800);
-    }, wait);
-  });
-</script>
-
+    // Hide preloader when page fully loads
+    window.addEventListener('load', function(){
+      var p = document.getElementById('preloader');
+      if(!p) return;
+      p.classList.add('hide');
+      // safety removal after transition
+      setTimeout(function(){ if(p && p.parentNode) p.parentNode.removeChild(p); }, 800);
+    });
+  </script>
 </body>
 </html>
