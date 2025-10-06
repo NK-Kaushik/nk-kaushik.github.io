@@ -3,64 +3,221 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Keerthi Kaushik Neelagiri</title>
+  <title>Keerthi Kaushik Neelagiri • Portfolio</title>
+  <meta name="description" content="Keerthi Kaushik Neelagiri — Master's in Software Engineering @ UMD (Dec 2025). Building data-driven software. Open to SWE/Data roles."/>
+  <meta property="og:title" content="Keerthi Kaushik Neelagiri — Portfolio"/>
+  <meta property="og:description" content="Data-driven software engineer (UMD MS). Projects in media, construction, and healthcare."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="assets/og-image.png"/>
+  <link rel="icon" href="assets/favicon.ico"/>
   <style>
-    body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;line-height:1.6;background:#0f172a;color:#e2e8f0}
-    .wrap{max-width:900px;margin:0 auto;padding:48px 20px}
+    /*
+      THEME: Royal • Majestic • Grand • Cool • Smooth
+      Palette: Black (base) + Gold (primary) + Deep Red (accent)
+    */
+    :root{
+      --bg:#0a0a0a;           /* near black */
+      --panel:#111111;        /* panels */
+      --text:#f5f5f5;         /* main text */
+      --muted:#c7c7c7;        /* secondary text */
+      --gold:#d4af37;         /* royal gold */
+      --gold-2:#b8901f;       /* deeper gold for shadows */
+      --red:#b91c1c;          /* deep crimson accent */
+      --border:#262626;       /* subtle border */
+      --radius:18px;          /* grand rounded corners */
+      --space:16px;           /* base spacing */
+      --container:1000px;     /* content width */
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+      --shadow: 0 1px 0 rgba(212,175,55,0.15), 0 6px 24px rgba(0,0,0,0.35);
+      --ring: 0 0 0 1px var(--gold) inset, 0 0 0 6px rgba(212,175,55,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Subtle gold scan at top for a majestic vibe */
+    body:before{
+      content:"";position:fixed;left:0;top:0;right:0;height:3px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:.7;pointer-events:none
+    }
+
+    .wrap{max-width:var(--container);margin:0 auto;padding:28px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .name{font-size:1.75rem;font-weight:700}
-    nav a{margin-left:16px;color:#93c5fd;text-decoration:none}
-    nav a:hover{text-decoration:underline}
-    .card{background:#0b1220;border:1px solid #1f2a44;border-radius:16px;padding:20px;margin-top:20px}
-    h2{margin:.4rem 0 0.6rem}
-    ul{padding-left:18px;margin:0}
-    footer{margin-top:40px;font-size:.9rem;color:#94a3b8}
-    .btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;border:1px solid #334155;color:#e2e8f0;text-decoration:none}
-    .btn:hover{background:#111827}
+    .brand{display:flex;align-items:center;gap:12px}
+    .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid var(--border);background:#111}
+    .name{font-weight:800;font-size:1.2rem;letter-spacing:.3px}
+    nav a{margin-left:18px;color:var(--text);opacity:.9}
+    nav a:hover{color:var(--gold)}
+
+    .hero{margin-top:28px;padding:24px;border:1px solid var(--border);background:linear-gradient(180deg, #0e0e0e, var(--panel));border-radius:var(--radius);
+      box-shadow:var(--shadow);position:relative;overflow:hidden}
+
+    /* Gold edge highlight */
+    .hero:before{
+      content:"";position:absolute;inset:0;border-radius:var(--radius);
+      padding:1px;background:linear-gradient(135deg, rgba(212,175,55,.35), rgba(185,28,28,.15));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude
+    }
+
+    h1{margin:0 0 8px;font-size:1.9rem}
+    .subtitle{color:var(--muted);margin-top:4px}
+
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .badge{padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.92rem}
+
+    .inline-links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .cta{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--gold);color:var(--text);
+      background:linear-gradient(180deg, rgba(212,175,55,.08), rgba(212,175,55,.02));box-shadow:var(--ring);
+      transition:transform .2s ease, box-shadow .2s ease}
+    .cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--gold) inset, 0 10px 30px rgba(212,175,55,.12)}
+    .cta.alt{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+    .cta.alt:hover{box-shadow:0 0 0 1px var(--red) inset, 0 10px 30px rgba(185,28,28,.25)}
+
+    section{margin-top:28px}
+    h2{margin:0 0 12px;font-size:1.4rem;letter-spacing:.2px}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;border:1px solid var(--border);background:linear-gradient(180deg, #0e0e0e, var(--panel));
+      border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative}
+    @media(min-width:720px){.card.half{grid-column:span 6}}
+    .card h3{margin:0 0 6px}
+    .meta{color:var(--muted);font-size:.95rem}
+    .list{margin:0;padding-left:18px}
+
+    /* Red underline accent for section titles */
+    h2:after{content:"";display:block;width:64px;height:2px;margin-top:8px;background:linear-gradient(90deg, var(--red), transparent)}
+
+    footer{margin:36px 0 10px;color:var(--muted);font-size:.95rem;text-align:center}
+    .tag{display:inline-block;margin-right:8px;margin-top:8px;padding:4px 8px;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:.85rem}
+
+    /* Smooth entrance */
+    [data-fade]{opacity:0;transform:translateY(8px);animation:fadeUp .6s ease forwards}
+    [data-fade="2"]{animation-delay:.06s}
+    [data-fade="3"]{animation-delay:.12s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div class="name">Keerthi Kaushik Neelagiri</div>
+    <header data-fade="1">
+      <div class="brand">
+        <img class="avatar" src="assets/headshot.jpg" alt="Headshot of Keerthi Kaushik Neelagiri" onerror="this.style.display='none'">
+        <div>
+          <div class="name">Keerthi Kaushik Neelagiri</div>
+          <div class="meta">MS Software Engineering @ UMD • Dec 2025</div>
+        </div>
+      </div>
       <nav>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <div class="card">
-      <h2>Hi, I’m Keerthi 👋</h2>
-      <p>Master’s student in Software Engineering @ UMD (Dec 2025). I build data-driven software and platforms. Seeking full-time SWE/Data roles in the U.S.</p>
-      <a class="btn" href="resume.pdf">View Résumé</a>
+    <div class="hero" data-fade="2">
+      <h1>Building data‑driven software.</h1>
+      <p class="subtitle">Ex‑Accenture (ETL & AWS Data Lake). Teaching Assistant for databases & secure software. I enjoy clean backends, robust data models, and usable UIs. Open to full‑time SWE/Data roles in the U.S.</p>
+      <div class="badges">
+        <span class="badge">Python • SQL • PL/SQL</span>
+        <span class="badge">AWS • ETL • Data Lakes</span>
+        <span class="badge">Django • FastAPI • React</span>
+        <span class="badge">PostgreSQL • MongoDB</span>
+      </div>
+      <div class="inline-links">
+        <a class="cta" href="resume.pdf">View Résumé</a>
+        <a class="cta alt" href="https://github.com/nk-kaushik" target="_blank" rel="noopener">GitHub</a>
+        <a class="cta" href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
 
-    <div id="projects" class="card">
+    <section id="projects" data-fade="2">
       <h2>Selected Projects</h2>
-      <ul>
-        <li><strong>News/Media</strong> — TBD — <em>Python, FastAPI, PostgreSQL</em> — <a href="#">GitHub</a></li>
-        <li><strong>Construction</strong> — TBD — <em>React, Node, MongoDB</em> — <a href="#">GitHub</a></li>
-        <li><strong>Healthcare</strong> — TBD — <em>Django, Pandas</em> — <a href="#">GitHub</a></li>
-      </ul>
-    </div>
+      <div class="grid">
+        <article class="card half">
+          <h3>Media/Publishing — TBD</h3>
+          <div class="meta">Python · FastAPI · PostgreSQL</div>
+          <p>Data‑driven news pipeline with topic clustering and summarization. Public API + dashboard.</p>
+          <div>
+            <a href="#">GitHub</a> · <a href="#">Live Demo</a>
+          </div>
+          <div class="tags">
+            <span class="tag">ETL</span><span class="tag">NLP</span><span class="tag">Backend</span>
+          </div>
+        </article>
+        <article class="card half">
+          <h3>Construction — TBD</h3>
+          <div class="meta">React · Node · MongoDB</div>
+          <p>Field data capture + analytics for site progress (photo logs, materials, schedule deltas).</p>
+          <div>
+            <a href="#">GitHub</a> · <a href="#">Live Demo</a>
+          </div>
+          <div class="tags">
+            <span class="tag">Dashboards</span><span class="tag">Data Viz</span><span class="tag">API</span>
+          </div>
+        </article>
+        <article class="card half">
+          <h3>Healthcare — TBD</h3>
+          <div class="meta">Django · Pandas</div>
+          <p>De‑identified patient metrics tracker with outcomes analysis and role‑based access.</p>
+          <div>
+            <a href="#">GitHub</a> · <a href="#">Live Demo</a>
+          </div>
+          <div class="tags">
+            <span class="tag">RBAC</span><span class="tag">Analytics</span><span class="tag">CRUD</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <div id="about" class="card">
+    <section id="experience" data-fade="3">
+      <h2>Experience</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Teaching Assistant — Foundations of Databases for Web Apps</strong>
+          <div class="meta">University of Maryland • 2025</div>
+          <ul class="list">
+            <li>Led weekly labs; guided SQL/NoSQL and DB‑web integration.</li>
+            <li>Prepared materials, graded, and provided constructive feedback.</li>
+            <li>Helped students with query optimization, transactions, and crash recovery concepts.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Associate Software Engineer — Accenture</strong>
+          <div class="meta">Data Ingestion • Pharma • AWS</div>
+          <ul class="list">
+            <li>Built ETL pipelines to AWS data lake; maintained Dev/Prod/UAT.</li>
+            <li>Migrated datasets; improved reliability and monitoring.</li>
+            <li>Collaborated across teams to streamline deployments.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" data-fade="3">
       <h2>About</h2>
-      <p>Ex-Accenture (ETL & Data Lake on AWS). TA for databases & secure software. I enjoy building clean backends, solid data models, and usable UIs.</p>
-    </div>
+      <div class="card">
+        <p>Master’s student in Software Engineering at UMD (Dec 2025). Interested in impactful software that blends solid engineering with clear data stories. Outside class, I’m active in clubs and enjoy squash, table tennis, and filmmaking.</p>
+      </div>
+    </section>
 
-    <div id="contact" class="card">
+    <section id="contact" data-fade="3">
       <h2>Contact</h2>
-      <p>
-        <a href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://nk-kaushik.github.io/" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="mailto:kaushik3@umd.edu">Email</a>
-      </p>
-    </div>
+      <div class="card">
+        <p>Email: <a href="mailto:kaushik3@umd.edu">kaushik3@umd.edu</a></p>
+        <p>Also on <a href="https://github.com/nk-kaushik" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/n-k-kaushik-21nkk/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      </div>
+    </section>
 
-    <footer>© <span id="y"></span> Keerthi Kaushik Neelagiri</footer>
+    <footer>
+      © <span id="year"></span> Keerthi Kaushik Neelagiri • nk‑kaushik.github.io
+    </footer>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
