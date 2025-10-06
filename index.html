@@ -108,10 +108,12 @@
     .loader{position:relative;width:160px;height:160px;display:grid;place-items:center}
     .loader .ring{position:absolute;inset:0;border-radius:50%;filter:drop-shadow(0 0 12px rgba(185,28,28,.35))}
     .loader svg{position:absolute;inset:0}
-    .loader .k{font:700 84px/1 'Times New Roman', Georgia, Garamond, ui-serif, serif; fill:#d4af37; letter-spacing:0; paint-order:stroke fill; stroke:#8a6b15; stroke-width:1.2; filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 10px rgba(185,28,28,.35))} 
+    .loader .k{font:800 92px/1 'Times New Roman', Georgia, Garamond, ui-serif, serif; fill:#b91c1c; letter-spacing:0; paint-order:stroke fill; stroke:#7f1313; stroke-width:1.4; filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 12px rgba(185,28,28,.45)); transform-box:fill-box; transform-origin:center; animation:royalPulse 1.6s ease-in-out infinite alternate}
+@keyframes royalPulse{from{transform:scale(1); filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(185,28,28,.35))} to{transform:scale(1.07); filter:drop-shadow(0 2px 0 rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(185,28,28,.6))}}
+@media (prefers-reduced-motion: reduce){.loader .k{animation:none}} 
     /* spinning strokes */
-    .spin-slow{animation:spin 2.2s linear infinite}
-    .spin-fast{animation:spin 1.1s linear infinite reverse}
+    .spin-slow{animation:spin 3.3s linear infinite}
+    .spin-fast{animation:spin 1.5s linear infinite reverse}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media (prefers-reduced-motion: reduce){.spin-slow,.spin-fast{animation:none}}
   </style>
@@ -139,6 +141,17 @@
       <svg viewBox="0 0 100 100" class="spin-slow" aria-hidden="true">
         <circle cx="50" cy="50" r="30" stroke="#d4af37" stroke-width="3" stroke-linecap="round" fill="none"
                 stroke-dasharray="60 180" stroke-dashoffset="20"/>
+      </svg>
+      <!-- Backplate behind K (bigger circle) -->
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <radialGradient id="kplate" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b91c1c" stop-opacity="0.20"/>
+            <stop offset="70%" stop-color="#b91c1c" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="36" fill="url(#kplate)" stroke="#1f1f1f" stroke-width="1"/>
       </svg>
       <!-- Center letter K -->
       <svg viewBox="0 0 100 100" aria-hidden="true">
