@@ -101,8 +101,51 @@
     [data-fade="3"]{animation-delay:.12s}
     @keyframes fadeUp{to{opacity:1;transform:none}}
   </style>
+  <style>
+    /* PRELOADER (red circular tech loader with 'K') */
+    #preloader{position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s ease, visibility .6s ease}
+    #preloader.hide{opacity:0;visibility:hidden}
+    .loader{position:relative;width:160px;height:160px;display:grid;place-items:center}
+    .loader .ring{position:absolute;inset:0;border-radius:50%;filter:drop-shadow(0 0 12px rgba(185,28,28,.35))}
+    .loader svg{position:absolute;inset:0}
+    .loader .k{font:700 64px/1 ui-sans-serif,system-ui,Segoe UI,Inter,Arial;fill:#b91c1c;letter-spacing:1px}
+    /* spinning strokes */
+    .spin-slow{animation:spin 2.2s linear infinite}
+    .spin-fast{animation:spin 1.1s linear infinite reverse}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media (prefers-reduced-motion: reduce){.spin-slow,.spin-fast{animation:none}}
+  </style>
 </head>
 <body>
+  <!-- Preloader overlay -->
+  <div id="preloader" aria-label="Loading">
+    <div class="loader" role="img" aria-label="Loading">
+      <!-- Outer subtle ring -->
+      <svg viewBox="0 0 100 100" class="ring" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" stroke="#1f1f1f" stroke-width="2" fill="none"/>
+      </svg>
+      <!-- Red segmented arc (fast) -->
+      <svg viewBox="0 0 100 100" class="spin-fast" aria-hidden="true">
+        <defs>
+          <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b91c1c" stop-opacity="1"/>
+            <stop offset="1" stop-color="#b91c1c" stop-opacity="0.2"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="38" stroke="url(#rg)" stroke-width="6" stroke-linecap="round" fill="none"
+                stroke-dasharray="140 120" stroke-dashoffset="0"/>
+      </svg>
+      <!-- Gold arc (slow) -->
+      <svg viewBox="0 0 100 100" class="spin-slow" aria-hidden="true">
+        <circle cx="50" cy="50" r="30" stroke="#d4af37" stroke-width="3" stroke-linecap="round" fill="none"
+                stroke-dasharray="60 180" stroke-dashoffset="20"/>
+      </svg>
+      <!-- Center letter K -->
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <text x="50" y="62" text-anchor="middle" class="k">K</text>
+      </svg>
+    </div>
+  </div>
   <div class="wrap">
     <header data-fade="1">
       <div class="brand">
@@ -219,5 +262,15 @@
     </footer>
   </div>
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script>
+    // Hide preloader when page fully loads
+    window.addEventListener('load', function(){
+      var p = document.getElementById('preloader');
+      if(!p) return;
+      p.classList.add('hide');
+      // safety removal after transition
+      setTimeout(function(){ if(p && p.parentNode) p.parentNode.removeChild(p); }, 800);
+    });
+  </script>
 </body>
 </html>
