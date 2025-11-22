@@ -15,89 +15,241 @@
   <style>
     /*
       THEME: Royal • Majestic • Grand • Cool • Smooth
-      Palette: Black (base) + Gold (primary) + Deep Red (accent)
+      Palette: Black (base) + Gold (primary) + Deep Red (accent) + White (text)
     */
     :root{
-      --bg:#0a0a0a;           /* near black */
-      --panel:#111111;        /* panels */
-      --text:#f5f5f5;         /* main text */
+      --bg:#050505;           /* deep black */
+      --panel:#101010;        /* panels */
+      --panel-soft:#141414;   /* alternate panel */
+      --text:#f8f8f8;         /* main text (white-ish) */
       --muted:#c7c7c7;        /* secondary text */
       --gold:#d4af37;         /* royal gold */
       --gold-2:#b8901f;       /* deeper gold for shadows */
       --red:#b91c1c;          /* deep crimson accent */
-      --border:#262626;       /* subtle border */
+      --border:#2c2c2c;       /* subtle border */
       --radius:18px;          /* grand rounded corners */
       --space:16px;           /* base spacing */
       --container:1000px;     /* content width */
       --font-heading: 'Cinzel', serif; /* royal display */
       --font-body: 'Marcellus', serif;  /* elegant readable */
-      --font: var(--font-body);
-      --shadow: 0 1px 0 rgba(212,175,55,0.15), 0 6px 24px rgba(0,0,0,0.35);
-      --ring: 0 0 0 1px var(--gold) inset, 0 0 0 6px rgba(212,175,55,.06);
+      --shadow: 0 1px 0 rgba(255,255,255,0.03), 0 10px 30px rgba(0,0,0,0.65);
+      --ring-gold: 0 0 0 1px rgba(212,175,55,.85), 0 0 18px rgba(212,175,55,.35);
+      --ring-red: 0 0 0 1px rgba(185,28,28,.85), 0 0 18px rgba(185,28,28,.35);
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7}
+    body{
+      font-family:var(--font-body);
+      background:radial-gradient(circle at top, rgba(185,28,28,.18), transparent 55%),
+                 radial-gradient(circle at bottom, rgba(212,175,55,.12), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
     a{color:var(--gold);text-decoration:none}
     a:hover{text-decoration:underline}
 
     /* Subtle gold scan at top for a majestic vibe */
     body:before{
       content:"";position:fixed;left:0;top:0;right:0;height:3px;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity:.7;pointer-events:none
+      background:linear-gradient(90deg, transparent, var(--gold), var(--red), transparent);
+      opacity:.85;pointer-events:none
     }
 
     .wrap{max-width:var(--container);margin:0 auto;padding:28px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;border:1px solid var(--border);background:#111} @media(min-width:900px){.avatar{width:128px;height:128px}}
-    .name{font-weight:800;font-size:1.25rem;letter-spacing:.35px;font-family:var(--font-heading)}
-    nav a{margin-left:18px;color:var(--text);opacity:.9}
-    nav a:hover{color:var(--gold)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .avatar{
+      width:118px;height:118px;border-radius:50%;object-fit:cover;
+      border:2px solid rgba(212,175,55,.7);
+      background:#111;
+      box-shadow:var(--ring-gold);
+    }
+    @media(min-width:900px){
+      .avatar{width:132px;height:132px}
+    }
+    .name{
+      font-weight:800;font-size:1.35rem;letter-spacing:.45px;
+      font-family:var(--font-heading);
+      color:#fff;
+    }
+    .meta{
+      color:var(--muted);font-size:.95rem;
+    }
+    nav a{
+      margin-left:18px;
+      color:var(--text);
+      opacity:.9;
+      font-size:.95rem;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+    nav a:hover{
+      color:var(--gold);
+    }
 
-    .hero{margin-top:28px;padding:24px;border:1px solid var(--border);background:linear-gradient(180deg, #0e0e0e, var(--panel));border-radius:var(--radius);
-      box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero{
+      margin-top:28px;padding:24px;border:1px solid rgba(212,175,55,.4);
+      background:
+        linear-gradient(135deg, rgba(185,28,28,.25), transparent 55%),
+        linear-gradient(180deg, #0b0b0b, var(--panel));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow), 0 0 0 1px rgba(0,0,0,0.8);
+      position:relative;overflow:hidden;
+    }
 
     /* Gold edge highlight */
     .hero:before{
       content:"";position:absolute;inset:0;border-radius:var(--radius);
-      padding:1px;background:linear-gradient(135deg, rgba(212,175,55,.35), rgba(185,28,28,.15));
+      padding:1px;background:linear-gradient(135deg, rgba(212,175,55,.6), rgba(185,28,28,.3));
       -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;mask-composite:exclude
+      -webkit-mask-composite:xor;mask-composite:exclude;
+      opacity:.9;
     }
 
-    h1{margin:0 0 8px;font-size:2.1rem;font-family:var(--font-heading);letter-spacing:.3px;text-shadow:0 1px 0 rgba(0,0,0,.4)}
-    .subtitle{color:var(--muted);margin-top:4px}
+    h1{
+      margin:0 0 10px;
+      font-size:2.4rem;
+      font-family:var(--font-heading);
+      letter-spacing:.32px;
+      text-shadow:0 1px 0 rgba(0,0,0,.6), 0 0 18px rgba(0,0,0,.9);
+      color:#fff;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:1.7rem;
+      letter-spacing:.25px;
+      font-family:var(--font-heading);
+      color:#ffffff;
+      text-transform:uppercase;
+    }
+    h2 span.section-kicker{
+      display:block;
+      font-size:.85rem;
+      letter-spacing:.18em;
+      color:var(--red);
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
 
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .badge{padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.92rem}
+    .subtitle{
+      color:#f0f0f0;
+      margin-top:4px;
+      font-size:1.05rem;
+    }
 
-    .inline-links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-    .cta{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--gold);color:var(--text);
-      background:linear-gradient(180deg, rgba(212,175,55,.08), rgba(212,175,55,.02));box-shadow:var(--ring);
-      transition:transform .2s ease, box-shadow .2s ease}
-    .cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--gold) inset, 0 10px 30px rgba(212,175,55,.12)}
-    .cta.alt{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
-    .cta.alt:hover{box-shadow:0 0 0 1px var(--red) inset, 0 10px 30px rgba(185,28,28,.25)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .badge{
+      padding:5px 11px;
+      border-radius:999px;
+      font-size:.9rem;
+      border:1px solid rgba(212,175,55,.5);
+      color:#fdfdfd;
+      background:linear-gradient(135deg, rgba(185,28,28,.65), rgba(15,15,15,1));
+      box-shadow:0 0 0 1px rgba(0,0,0,.8);
+    }
 
-    section{margin-top:28px}
-    h2{margin:0 0 12px;font-size:1.45rem;letter-spacing:.25px;font-family:var(--font-heading)}
+    section{margin-top:32px;padding-top:4px}
+    section + section{
+      border-top:1px solid rgba(212,175,55,.13);
+    }
 
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 12;border:1px solid var(--border);background:linear-gradient(180deg, #0e0e0e, var(--panel));
-      border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative}
-    @media(min-width:720px){.card.half{grid-column:span 6}}
-    .card h3{margin:0 0 6px}
-    .meta{color:var(--muted);font-size:.95rem}
-    .list{margin:0;padding-left:18px}
+    .card{
+      grid-column:span 12;
+      border:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, var(--panel-soft), #050505);
+      border-radius:var(--radius);
+      padding:18px 18px 20px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+    /* Job & School visual separation */
+    .card.job{
+      border-color:rgba(185,28,28,.65);
+      box-shadow:var(--shadow), 0 0 0 1px rgba(185,28,28,.65);
+    }
+    .card.school{
+      border-color:rgba(212,175,55,.7);
+      box-shadow:var(--shadow), 0 0 0 1px rgba(212,175,55,.7);
+    }
+    @media(min-width:720px){
+      .card.half{grid-column:span 6}
+    }
 
-    /* Red underline accent for section titles */
-    h2:after{content:"";display:block;width:64px;height:2px;margin-top:8px;background:linear-gradient(90deg, var(--red), transparent)}
+    .card-title{
+      font-weight:700;
+      font-size:1.05rem;
+      color:#fff;
+    }
+    .meta-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .meta-dates{
+      color:#fdfdfd;
+      font-size:.88rem;
+      font-style:italic;
+    }
 
-    footer{margin:36px 0 10px;color:var(--muted);font-size:.95rem;text-align:center}
-    .tag{display:inline-block;margin-right:8px;margin-top:8px;padding:4px 8px;border:1px dashed var(--border);border-radius:8px;color:var(--muted);font-size:.85rem}
+    .list{margin:10px 0 0;padding-left:18px;font-size:.96rem}
+    .list li{
+      margin-bottom:4px;
+    }
+    .list li::marker{
+      color:var(--red);
+    }
+
+    /* Logos in cards */
+    .item-header{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .item-logo{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:14px;
+      background:#050505;
+      padding:5px;
+      box-shadow:var(--ring-gold);
+    }
+    .item-logo.job{
+      box-shadow:var(--ring-red);
+    }
+
+    /* Section title accent line */
+    h2:after{
+      content:"";
+      display:block;
+      width:80px;
+      height:3px;
+      margin-top:8px;
+      background:linear-gradient(90deg, var(--red), var(--gold), transparent);
+      border-radius:99px;
+    }
+
+    footer{
+      margin:40px 0 10px;
+      color:var(--muted);
+      font-size:.95rem;
+      text-align:center;
+    }
+    .tag{
+      display:inline-block;
+      margin-right:8px;margin-top:8px;
+      padding:4px 8px;
+      border:1px dashed var(--border);
+      border-radius:8px;
+      color:var(--muted);
+      font-size:.85rem;
+    }
 
     /* Smooth entrance */
     [data-fade]{opacity:0;transform:translateY(8px);animation:fadeUp .6s ease forwards}
@@ -105,16 +257,42 @@
     [data-fade="3"]{animation-delay:.12s}
     @keyframes fadeUp{to{opacity:1;transform:none}}
   </style>
+
   <style>
     /* PRELOADER (red circular tech loader with 'K') */
-    #preloader{position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s ease, visibility .6s ease}
+    #preloader{
+      position:fixed;inset:0;background:#050505;
+      display:flex;align-items:center;justify-content:center;
+      z-index:9999;
+      transition:opacity .6s ease, visibility .6s ease;
+    }
     #preloader.hide{opacity:0;visibility:hidden}
     .loader{position:relative;width:160px;height:160px;display:grid;place-items:center}
     .loader .ring{position:absolute;inset:0;border-radius:50%;filter:drop-shadow(0 0 12px rgba(185,28,28,.35))}
     .loader svg{position:absolute;inset:0}
-    .loader .k{font:800 92px/1 'Times New Roman', Georgia, Garamond, ui-serif, serif; fill:#b91c1c; letter-spacing:0; paint-order:stroke fill; stroke:#7f1313; stroke-width:1.4; filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 12px rgba(185,28,28,.45)); transform-box:fill-box; transform-origin:center; animation:royalPulse 1.6s ease-in-out infinite alternate}
-@keyframes royalPulse{from{transform:scale(1); filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(185,28,28,.35))} to{transform:scale(1.07); filter:drop-shadow(0 2px 0 rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(185,28,28,.6))}}
-@media (prefers-reduced-motion: reduce){.loader .k{animation:none}} 
+    .loader .k{
+      font:800 92px/1 'Times New Roman', Georgia, Garamond, ui-serif, serif;
+      fill:#b91c1c;
+      letter-spacing:0;
+      paint-order:stroke fill;
+      stroke:#7f1313;
+      stroke-width:1.4;
+      filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 12px rgba(185,28,28,.45));
+      transform-box:fill-box;
+      transform-origin:center;
+      animation:royalPulse 1.6s ease-in-out infinite alternate;
+    }
+    @keyframes royalPulse{
+      from{
+        transform:scale(1);
+        filter:drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(185,28,28,.35));
+      }
+      to{
+        transform:scale(1.07);
+        filter:drop-shadow(0 2px 0 rgba(0,0,0,.65)) drop-shadow(0 0 18px rgba(185,28,28,.6));
+      }
+    }
+    @media (prefers-reduced-motion: reduce){.loader .k{animation:none}}
     /* spinning strokes */
     .spin-slow{animation:spin 2.2s linear infinite}
     .spin-fast{animation:spin 1.1s linear infinite reverse}
@@ -122,6 +300,7 @@
     @media (prefers-reduced-motion: reduce){.spin-slow,.spin-fast{animation:none}}
   </style>
 </head>
+
 <body>
   <!-- Preloader overlay -->
   <div id="preloader" aria-label="Loading">
@@ -163,6 +342,7 @@
       </svg>
     </div>
   </div>
+
   <div class="wrap">
     <header data-fade="1">
       <div class="brand">
@@ -173,7 +353,7 @@
         </div>
       </div>
       <nav>
-        <a href="#work experience">Work Experience</a>
+        <a href="#experience">Work Experience</a>
         <a href="#school">School</a>
         <a href="#volunteering">Volunteering</a>
         <a href="#certs">Certifications</a>
@@ -181,84 +361,187 @@
       </nav>
     </header>
 
+    <!-- HERO -->
+    <div class="hero" data-fade="2">
+      <h1>Keerthi Kaushik Neelagiri</h1>
+      <p class="subtitle">
+        Graduate Software Engineer at UMD (M.Eng., Dec 2025). Ex-Accenture (ETL & AWS Data Lakes).
+        Interested in secure backends, data platforms, and systems that tell clear stories with data.
+      </p>
+      <div class="badges">
+        <span class="badge">Python • SQL • PL/SQL</span>
+        <span class="badge">AWS • ETL • Data Lakes</span>
+        <span class="badge">Secure Software Engineering</span>
+        <span class="badge">Databases • Data Modelling</span>
       </div>
     </div>
-      
-    </div>
 
-    
-      <section id="work experience" data-fade="3">
-      <h2>Work Experience</h2>
-      <div class="card">
-        <ul class="list">
-          <li>Graduate Teaching Assistant– ENPM 687: Digital Forensics and Incidence Responses - UMD</li>
-          <li>Graduate Teaching Assistant– ENEB 457: Foundations of Databases for Web Applications - UMD</li>
-          <li>Associate Software Engineer - Accenture</li>
-          <li>Network Engineer Intern - BSNL</li>
-        </ul>
+    <!-- WORK EXPERIENCE -->
+    <section id="experience" data-fade="3">
+      <h2><span class="section-kicker">Professional</span>Work Experience</h2>
+
+      <div class="grid">
+        <!-- GTA — ENPM 687 -->
+        <div class="card job">
+          <div class="item-header">
+            <img class="item-logo job" src="assets/logo-umd.jpeg" alt="UMD logo" onerror="this.style.display='none'">
+            <div>
+              <div class="card-title">Graduate Teaching Assistant — ENPM 687: Digital Forensics and Incident Response</div>
+              <div class="meta-line">
+                <span>University of Maryland</span>
+                <span>College Park, MD</span>
+              </div>
+              <div class="meta-dates">[Start – End dates]</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Assisted with labs on forensic imaging, evidence handling, and incident triage.</li>
+            <li>Supported grading of assignments and projects, ensuring clear, actionable feedback.</li>
+            <li>Helped students reason about real-world intrusion scenarios and investigation workflows.</li>
+          </ul>
+        </div>
+
+        <!-- GTA — ENEB 457 -->
+        <div class="card job">
+          <div class="item-header">
+            <img class="item-logo job" src="assets/logo-umd.jpeg" alt="UMD logo" onerror="this.style.display='none'">
+            <div>
+              <div class="card-title">Graduate Teaching Assistant — ENEB 457: Foundations of Databases for Web Applications</div>
+              <div class="meta-line">
+                <span>University of Maryland</span>
+                <span>College Park, MD</span>
+              </div>
+              <div class="meta-dates">[Start – End dates]</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Guided students through relational modelling, SQL, transactions, and indexing.</li>
+            <li>Led office hours to debug schema design and query performance issues.</li>
+            <li>Reviewed projects integrating web applications with backend databases.</li>
+          </ul>
+        </div>
+
+        <!-- Accenture -->
+        <div class="card job">
+          <div class="item-header">
+            <img class="item-logo job" src="assets/logo-accenture.jpeg" alt="Accenture logo" onerror="this.style.display='none'">
+            <div>
+              <div class="card-title">Associate Software Engineer — Data Ingestion & ETL</div>
+              <div class="meta-line">
+                <span>Accenture</span>
+                <span>Pharma Client • AWS</span>
+              </div>
+              <div class="meta-dates">[Start – End dates]</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Maintained and extended ETL pipelines ingesting pharma data into an AWS-based data lake.</li>
+            <li>Worked across Dev/Prod/UAT environments, improving reliability and issue resolution time.</li>
+            <li>Collaborated with cross-functional teams to debug data quality and ingestion issues.</li>
+          </ul>
+        </div>
+
+        <!-- BSNL -->
+        <div class="card job">
+          <div class="item-header">
+            <img class="item-logo job" src="assets/logo-bsnl.jpeg" alt="BSNL logo" onerror="this.style.display='none'">
+            <div>
+              <div class="card-title">Network Engineer Intern — Telecom & Transmission</div>
+              <div class="meta-line">
+                <span>BSNL</span>
+                <span>Hyderabad, India</span>
+              </div>
+              <div class="meta-dates">[Start – End dates]</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Trained on OFC, transmission networks, mobile communications, IoT, and 5G fundamentals.</li>
+            <li>Implemented a campus area virtual network using VLAN concepts under senior engineer guidance.</li>
+            <li>Observed day-to-day operations of telecom support infrastructure and network monitoring.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-
+    <!-- SCHOOL -->
     <section id="school" data-fade="3">
-      <h2>School</h2>
-      <div class="card">
-        <strong>University of Maryland, College Park</strong>
-        <div class="meta">M.Eng., Software Engineering • Expected Dec 2025</div>
+      <h2><span class="section-kicker">Education</span>School</h2>
+
+      <div class="card school">
+        <div class="item-header">
+          <img class="item-logo" src="assets/logo-umd.jpeg" alt="UMD logo" onerror="this.style.display='none'">
+          <div>
+            <div class="card-title">M.Eng., Software Engineering</div>
+            <div class="meta-line">
+              <span>University of Maryland, College Park</span>
+              <span>Expected Dec 2025</span>
+            </div>
+          </div>
+        </div>
         <ul class="list">
           <li>Coursework: Databases for Web Apps, Secure Software Engineering, Digital Forensics & IR, Requirements Engineering.</li>
-          <li>Clubs: AI/ML at UMD, Cinematheque, Table Tennis, Squash, Filmmakers, UNICEF, Yogi Terps.</li>
+          <li>Active in: AI/ML at UMD, Cinematheque, Table Tennis, Squash, Filmmakers, UNICEF, Yogi Terps.</li>
         </ul>
       </div>
 
-      <div class="card">
-        <strong>University of Maryland, College Park</strong>
-        <div class="meta">Graduate Certificate, Data Science •  MAY 2025</div>
+      <div class="card school">
+        <div class="item-header">
+          <img class="item-logo" src="assets/logo-umd.jpeg" alt="UMD logo" onerror="this.style.display='none'">
+          <div>
+            <div class="card-title">Graduate Certificate, Data Science</div>
+            <div class="meta-line">
+              <span>University of Maryland, College Park</span>
+              <span>May 2025</span>
+            </div>
+          </div>
+        </div>
         <ul class="list">
-          <li>Coursework: Introdution to Data Science, Introduction to Machine Learning, Probability & Statistics, Data Representation and Modelling.</li>
+          <li>Coursework: Introduction to Data Science, Introduction to Machine Learning, Probability & Statistics, Data Representation and Modelling.</li>
         </ul>
       </div>
 
-      <div class="card">
-        <strong>Mahatma Gandhi Institute of Technology, Hyderabad, India</strong>
-        <div class="meta">B.Tech, Electronics and Communication Engineering •  JULY 2022</div>
-        <ul class="list">
-        </ul>
+      <div class="card school">
+        <div class="item-header">
+          <img class="item-logo" src="assets/logo-mgit.jpeg" alt="MGIT logo" onerror="this.style.display='none'">
+          <div>
+            <div class="card-title">B.Tech, Electronics and Communication Engineering</div>
+            <div class="meta-line">
+              <span>Mahatma Gandhi Institute of Technology, Hyderabad</span>
+              <span>July 2022</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- VOLUNTEERING -->
     <section id="volunteering" data-fade="3">
-      <h2>Volunteering</h2>
+      <h2><span class="section-kicker">Service</span>Volunteering</h2>
+
       <div class="card">
-        <strong>Graduate Student Senator  — Engineering Graduate Student Society (University of Maryland)</strong>
+        <div class="card-title">Graduate Student Senator — Engineering Graduate Student Society (UMD)</div>
         <ul class="list">
-          <li>Elected as the Master’s Representative to the EGSS Council, representing the interests of graduate
- students in the A. James Clark School of Engineering.</li>
-          <li>Actively assess and present student concerns about safety, working conditions, and departmental
- relationships with the Dean and administration.</li>
-          <li>Collaborate with representatives from all engineering departments to promote educational and social
- initiatives that enhance the graduate student experience.</li>
-          <li> Support university-wide diversity and inclusion goals by contributing to policy discussions and
- community engagement activities.</li>
+          <li>Elected as the Master’s Representative to the EGSS Council, representing graduate students in the A. James Clark School of Engineering.</li>
+          <li>Assess and present student concerns on safety, working conditions, and departmental relationships to the Dean and administration.</li>
+          <li>Collaborate with representatives across departments to promote educational and social initiatives.</li>
+          <li>Support diversity and inclusion goals through policy discussions and community engagement.</li>
         </ul>
       </div>
 
       <div class="card">
-        <strong>National Cadet Corps (India) — Cadet</strong>
+        <div class="card-title">National Cadet Corps (India) — Cadet</div>
         <ul class="list">
-          <li>Completed rigorous training in leadership, discipline, and teamwork through structured drills and
- exercises.</li>
-          <li>Participated in multiple camps and parades, demonstrating commitment to national service and civic
- responsibility.</li>
-          <li> Participated in community service initiatives, contributing 50+ hours to social welfare and public
- awareness programs.</li>
-          <li>Learned the fundamentals of naval operations, including navigation, seamanship, and survival skills.</li>
+          <li>Completed training in leadership, discipline, and teamwork through structured drills and exercises.</li>
+          <li>Participated in camps and parades, demonstrating commitment to national service and civic responsibility.</li>
+          <li>Contributed 50+ hours to community service and public awareness initiatives.</li>
+          <li>Learned fundamentals of naval operations including navigation, seamanship, and survival skills.</li>
         </ul>
       </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
     <section id="certs" data-fade="3">
-      <h2>Certifications</h2>
+      <h2><span class="section-kicker">Skills</span>Certifications</h2>
       <div class="card">
         <ul class="list">
           <li>Oracle PL/SQL (training) — Accenture</li>
@@ -266,15 +549,25 @@
         </ul>
       </div>
     </section>
-    
+
+    <!-- CONTACT -->
     <section id="contact" data-fade="3">
-      <h2>Contact</h2>
+      <h2><span class="section-kicker">Reach Out</span>Contact</h2>
       <div class="card">
         <style>
           .icon-row{display:flex;gap:16px;flex-wrap:wrap}
-          .icon-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);
-            text-decoration:none;color:var(--text);background:linear-gradient(180deg,#101010,#0d0d0d);box-shadow:0 0 0 1px rgba(212,175,55,.12) inset;transition:transform .15s ease, box-shadow .2s ease, color .2s}
-          .icon-link:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--gold) inset, 0 8px 24px rgba(212,175,55,.12)}
+          .icon-link{
+            display:flex;align-items:center;gap:10px;
+            padding:10px 14px;border-radius:12px;border:1px solid var(--border);
+            text-decoration:none;color:var(--text);
+            background:linear-gradient(180deg,#101010,#050505);
+            box-shadow:0 0 0 1px rgba(212,175,55,.12) inset;
+            transition:transform .15s ease, box-shadow .2s ease, color .2s;
+          }
+          .icon-link:hover{
+            transform:translateY(-1px);
+            box-shadow:0 0 0 1px var(--gold) inset, 0 8px 24px rgba(212,175,55,.24);
+          }
           .icon svg{width:22px;height:22px;filter:drop-shadow(0 0 6px rgba(212,175,55,.25))}
           .icon .core{fill:#d4af37}              /* default gold */
           .icon-link.linkedin .core{fill:#0A66C2}/* LinkedIn blue */
@@ -329,9 +622,10 @@
     </section>
 
     <footer>
-      © <span id="year"></span> Keerthi Kaushik Neelagiri • nk‑kaushik.github.io
+      © <span id="year"></span> Keerthi Kaushik Neelagiri • nk-kaushik.github.io
     </footer>
   </div>
+
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
   <script>
     // Hide preloader when page fully loads
